@@ -6,11 +6,10 @@ PREFIX : <https://nickdrummond.github.io/star-wars-ontology/ontologies#>
 
 SELECT ?classType ?event ?relation
 WHERE {
-	?event a ?classType # i find what kind of class each event is
-	FILTER (
-   		 !REGEX(STR(?classType), STR(owl:))
-  	) .
+	?event a ?classType . # i find what kind of class each event is
   	# i then find all events that have an object property assertion where the individual Barriss Offee is part of it
+	?classType (rdfs:subClassOf|owl:equivalentClass|(owl:intersectionOf/rdf:rest*/rdf:first))* :Event  #returns all subclasses, equivalent classes and all refences to those (whenever a class appears in an intersection)
+	FILTER( isIRI( ?classType ) ) . # i filter all the "named classes" (not those from rdf or owl and no Anonymous Classes)
 	?event ?relation :Barriss_Offee
 	FILTER(?relation != owl:hasValue && ?relation != rdf:first)
 }
