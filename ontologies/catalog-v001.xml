@@ -27,6 +27,7 @@
     <uri id="Imports Wizard Entry" name="https://nickdrummond.github.io/star-wars-ontology/ontologies/republic-era.owl.ttl" uri="republic-era.owl.ttl"/>
     <uri id="Imports Wizard Entry" name="https://nickdrummond.github.io/star-wars-ontology/ontologies/resistance.owl.ttl" uri="resistance.owl.ttl"/>
     <uri id="Imports Wizard Entry" name="https://nickdrummond.github.io/star-wars-ontology/ontologies/rogue_one.owl.ttl" uri="rogue_one.owl.ttl"/>
+    <uri id="Imports Wizard Entry" name="https://nickdrummond.github.io/star-wars-ontology/ontologies/rules.owl.ttl" uri="rules.owl.ttl"/>
     <uri id="Imports Wizard Entry" name="https://nickdrummond.github.io/star-wars-ontology/ontologies/sequels.owl.ttl" uri="sequels.owl.ttl"/>
     <uri id="Imports Wizard Entry" name="https://nickdrummond.github.io/star-wars-ontology/ontologies/solo.owl.ttl" uri="solo.owl.ttl"/>
     <uri id="Imports Wizard Entry" name="https://nickdrummond.github.io/star-wars-ontology/ontologies/species.owl.ttl" uri="species.owl.ttl"/>

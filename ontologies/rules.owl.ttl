@@ -1,0 +1,285 @@
+@prefix : <http://www.semanticweb.org/admin/ontologies/2025/5/untitled-ontology-69/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/admin/ontologies/2025/5/untitled-ontology-69/> .
+
+<https://nickdrummond.github.io/star-wars-ontology/ontologies/rules.owl.ttl> rdf:type owl:Ontology ;
+                                                                              owl:imports <https://nickdrummond.github.io/star-wars-ontology/ontologies/events.owl.ttl> .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled
+<http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#hadAdoptedDaughter
+<https://nickdrummond.github.io/star-wars-ontology/ontologies#hadAdoptedDaughter> rdf:type owl:ObjectProperty ;
+                                                                                  rdfs:subPropertyOf <https://nickdrummond.github.io/star-wars-ontology/ontologies#raised> .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#hadAdoptedFather
+<https://nickdrummond.github.io/star-wars-ontology/ontologies#hadAdoptedFather> rdf:type owl:ObjectProperty ;
+                                                                                rdfs:subPropertyOf <https://nickdrummond.github.io/star-wars-ontology/ontologies#raisedBy> .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#hadAdoptedMother
+<https://nickdrummond.github.io/star-wars-ontology/ontologies#hadAdoptedMother> rdf:type owl:ObjectProperty ;
+                                                                                rdfs:subPropertyOf <https://nickdrummond.github.io/star-wars-ontology/ontologies#raisedBy> .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#hadAdoptedSon
+<https://nickdrummond.github.io/star-wars-ontology/ontologies#hadAdoptedSon> rdf:type owl:ObjectProperty ;
+                                                                             rdfs:subPropertyOf <https://nickdrummond.github.io/star-wars-ontology/ontologies#raised> .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#age
+<https://nickdrummond.github.io/star-wars-ontology/ontologies#age> rdf:type owl:DatatypeProperty ;
+                                                                   rdfs:subPropertyOf owl:topDataProperty ;
+                                                                   rdfs:range xsd:integer .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Man
+<https://nickdrummond.github.io/star-wars-ontology/ontologies#Man> rdf:type owl:Class ;
+                                                                   owl:equivalentClass [ owl:intersectionOf ( <https://nickdrummond.github.io/star-wars-ontology/ontologies#Humanoid>
+                                                                                                              [ rdf:type owl:Restriction ;
+                                                                                                                owl:onProperty <https://nickdrummond.github.io/star-wars-ontology/ontologies#gender> ;
+                                                                                                                owl:someValuesFrom <https://nickdrummond.github.io/star-wars-ontology/ontologies#Male>
+                                                                                                              ]
+                                                                                                            ) ;
+                                                                                         rdf:type owl:Class
+                                                                                       ] .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Woman
+<https://nickdrummond.github.io/star-wars-ontology/ontologies#Woman> rdf:type owl:Class ;
+                                                                     owl:equivalentClass [ owl:intersectionOf ( <https://nickdrummond.github.io/star-wars-ontology/ontologies#Humanoid>
+                                                                                                                [ rdf:type owl:Restriction ;
+                                                                                                                  owl:onProperty <https://nickdrummond.github.io/star-wars-ontology/ontologies#gender> ;
+                                                                                                                  owl:someValuesFrom <https://nickdrummond.github.io/star-wars-ontology/ontologies#Female>
+                                                                                                                ]
+                                                                                                              ) ;
+                                                                                           rdf:type owl:Class
+                                                                                         ] .
+
+
+#################################################################
+#    Rules
+#################################################################
+
+:birthEvent rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+:yearBirth rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+:character rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+:deathEvent rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+:yearDeath rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+:characterAge rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+:child rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+:adult rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+:subEvent rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+:superEvent rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+:y rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "" ;
+   rdfs:label "FatherAdoptionRule" ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> <https://nickdrummond.github.io/star-wars-ontology/ontologies#raisedBy> ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> :child ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> :adult
+                                                     ] ;
+                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#classPredicate> <https://nickdrummond.github.io/star-wars-ontology/ontologies#Man> ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument1> :adult
+                                                                ] ;
+                                                      rdf:rest rdf:nil
+                                                    ]
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> <https://nickdrummond.github.io/star-wars-ontology/ontologies#hadAdoptedFather> ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> :child ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> :adult
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "" ;
+   rdfs:label "SonAdoptionRule" ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> <https://nickdrummond.github.io/star-wars-ontology/ontologies#raised> ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> :adult ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> :child
+                                                     ] ;
+                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#classPredicate> <https://nickdrummond.github.io/star-wars-ontology/ontologies#Man> ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument1> :child
+                                                                ] ;
+                                                      rdf:rest rdf:nil
+                                                    ]
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> <https://nickdrummond.github.io/star-wars-ontology/ontologies#hadAdoptedSon> ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> :adult ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> :child
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "" ;
+   rdfs:label "MotherAdoptionRule" ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> <https://nickdrummond.github.io/star-wars-ontology/ontologies#raisedBy> ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> :child ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> :adult
+                                                     ] ;
+                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#classPredicate> <https://nickdrummond.github.io/star-wars-ontology/ontologies#Woman> ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument1> :adult
+                                                                ] ;
+                                                      rdf:rest rdf:nil
+                                                    ]
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> <https://nickdrummond.github.io/star-wars-ontology/ontologies#hadAdoptedMother> ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> :child ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> :adult
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "" ;
+   rdfs:label "inferYear" ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> <https://nickdrummond.github.io/star-wars-ontology/ontologies#during> ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> :subEvent ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> :superEvent
+                                                     ] ;
+                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#propertyPredicate> <https://nickdrummond.github.io/star-wars-ontology/ontologies#year> ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument1> :superEvent ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument2> :y
+                                                                ] ;
+                                                      rdf:rest rdf:nil
+                                                    ]
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> <https://nickdrummond.github.io/star-wars-ontology/ontologies#year> ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> :subEvent ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> :y
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "" ;
+   rdfs:label "AgeRule" ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> <https://nickdrummond.github.io/star-wars-ontology/ontologies#year> ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> :birthEvent ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> :yearBirth
+                                                     ] ;
+                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#classPredicate> <https://nickdrummond.github.io/star-wars-ontology/ontologies#Birth> ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument1> :birthEvent
+                                                                ] ;
+                                                      rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                 rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                                             <http://www.w3.org/2003/11/swrl#propertyPredicate> <https://nickdrummond.github.io/star-wars-ontology/ontologies#of> ;
+                                                                             <http://www.w3.org/2003/11/swrl#argument1> :birthEvent ;
+                                                                             <http://www.w3.org/2003/11/swrl#argument2> :character
+                                                                           ] ;
+                                                                 rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                            rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
+                                                                                        <http://www.w3.org/2003/11/swrl#propertyPredicate> <https://nickdrummond.github.io/star-wars-ontology/ontologies#year> ;
+                                                                                        <http://www.w3.org/2003/11/swrl#argument1> :deathEvent ;
+                                                                                        <http://www.w3.org/2003/11/swrl#argument2> :yearDeath
+                                                                                      ] ;
+                                                                            rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                                       rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                                                                   <http://www.w3.org/2003/11/swrl#classPredicate> <https://nickdrummond.github.io/star-wars-ontology/ontologies#Death> ;
+                                                                                                   <http://www.w3.org/2003/11/swrl#argument1> :deathEvent
+                                                                                                 ] ;
+                                                                                       rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                                                  rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                                                                              <http://www.w3.org/2003/11/swrl#propertyPredicate> <https://nickdrummond.github.io/star-wars-ontology/ontologies#of> ;
+                                                                                                              <http://www.w3.org/2003/11/swrl#argument1> :deathEvent ;
+                                                                                                              <http://www.w3.org/2003/11/swrl#argument2> :character
+                                                                                                            ] ;
+                                                                                                  rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                                                             rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#BuiltinAtom> ;
+                                                                                                                         <http://www.w3.org/2003/11/swrl#builtin> <http://www.w3.org/2003/11/swrlb#subtract> ;
+                                                                                                                         <http://www.w3.org/2003/11/swrl#arguments> ( :characterAge
+                                                                                                                                                                      :yearDeath
+                                                                                                                                                                      :yearBirth
+                                                                                                                                                                    )
+                                                                                                                       ] ;
+                                                                                                             rdf:rest rdf:nil
+                                                                                                           ]
+                                                                                                ]
+                                                                                     ]
+                                                                          ]
+                                                               ]
+                                                    ]
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> <https://nickdrummond.github.io/star-wars-ontology/ontologies#age> ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> :character ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> :characterAge
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
